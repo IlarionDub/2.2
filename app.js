@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 async function syncToServer(dataType, dataArray) {
     try {
         // Завантажуємо всі існуюdчі записи з сервера
-        const response = await fetch(`https://a800-78-99-54-47.ngrok-free.app/${dataType}`);
+        const response = await fetch(`https://localhost:3000/${dataType}`);
         const existingData = await response.json();
 
         for (const item of dataArray) {
@@ -58,14 +58,14 @@ async function syncToServer(dataType, dataArray) {
 
             if (existingItem) {
                 // Якщо запис знайдено, видаляємо його
-                await fetch(`https://a800-78-99-54-47.ngrok-free.app/${dataType}/${existingItem.id}`, {
+                await fetch(`https://localhost:3000/${dataType}/${existingItem.id}`, {
                     method: 'DELETE',
                 });
                 console.log(`Deleted duplicate ${dataType.slice(0, -1)} from server:`, existingItem);
             }
 
             // Додаємо новий запис
-            await fetch(`https://a800-78-99-54-47.ngrok-free.app/${dataType}`, {
+            await fetch(`https://localhost:3000/${dataType}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -83,7 +83,7 @@ async function syncToServer(dataType, dataArray) {
 // Функція для отримання даних із сервера
 async function syncFromServer(dataType) {
     try {
-        const response = await fetch(`https://a800-78-99-54-47.ngrok-free.app/${dataType}`);
+        const response = await fetch(`https://localhost:3000/${dataType}`);
         const data = await response.json();
         console.log(`${dataType} synced from server:`, data);
 
