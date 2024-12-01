@@ -20,7 +20,7 @@ const app = express();
 
 // Налаштування CORS для дозволу запитів з певного джерела
 const corsOptions = {
-    origin: 'https://ilariondub.github.io', // Дозволити лише цей домен
+    origin: 'https://ilariondub.github.io/2.2/', // Дозволити лише цей домен
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Дозволені HTTP-методи
     credentials: true // Якщо потрібні cookies
 };
